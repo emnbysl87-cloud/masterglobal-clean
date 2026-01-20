@@ -1,600 +1,791 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Master Global LLC – Amazon & E-Commerce Growth for Brands</title>
-  <style>
-    :root{
-      --bg1:#dfe9ff;
-      --bg2:#a9c3ff;
-      --bg3:#3c6fd6;
-      --ink:#0b1a3a;
-      --muted:#4b5b7c;
-      --card:#ffffffcc;
-      --glass: rgba(255,255,255,.18);
-      --stroke: rgba(255,255,255,.35);
-      --shadow: 0 18px 50px rgba(10,25,60,.22);
-      --btn:#2f66d2;
-      --btn2:#1e4fb6;
-    }
+    <meta charset="UTF-8" />
+    <title>Master Global LLC – Amazon & E-Commerce Growth for Brands</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        :root {
+            --bg-top: #e6f0ff;
+            --bg-mid: #c8ddff;
+            --bg-bottom: #93b8ff;
+            --primary: #1f5fd8;
+            --primary-dark: #1140a0;
+            --primary-soft: #3b72e6;
+            --nav-text: #1d2940;
+            --text-main: #0d1630;
+            --text-soft: #4b5b7f;
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --card-bg-soft: rgba(11, 34, 80, 0.9);
+            --border-soft: rgba(255, 255, 255, 0.22);
+            --shadow-soft: 0 26px 60px rgba(7, 30, 75, 0.45);
+            --radius-lg: 24px;
+        }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--ink);
-      background:
-        radial-gradient(1200px 700px at 20% 10%, var(--bg1) 0%, rgba(223,233,255,0) 55%),
-        radial-gradient(1100px 700px at 90% 15%, #eaf1ff 0%, rgba(234,241,255,0) 60%),
-        linear-gradient(180deg, #eef4ff 0%, #cfe0ff 25%, #8fb1ff 55%, #2d5fca 100%);
-      overflow-x:hidden;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    .wrap{
-      max-width: 980px;
-      margin: 22px auto 70px;
-      padding: 0 18px;
-    }
+        body {
+            min-height: 100vh;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--text-main);
+            background: radial-gradient(circle at top left, #ffffff 0, #d9e7ff 40%, #6a93ff 100%);
+            display: flex;
+            justify-content: center;
+            padding: 32px 12px;
+        }
 
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      font-size:12.5px;
-      color:rgba(10,25,60,.75);
-      padding: 4px 8px;
-    }
+        .page-shell {
+            width: 100%;
+            max-width: 1200px;
+            background: linear-gradient(180deg, var(--bg-top), var(--bg-mid) 40%, var(--bg-bottom) 100%);
+            border-radius: 32px;
+            box-shadow: 0 34px 80px rgba(5, 22, 60, 0.55);
+            overflow: hidden;
+            position: relative;
+        }
 
-    .topbar .left, .topbar .right{
-      display:flex; align-items:center; gap:14px; flex-wrap:wrap;
-    }
-    .chip{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:7px 10px;
-      border-radius:999px;
-      background: rgba(255,255,255,.35);
-      border:1px solid rgba(255,255,255,.45);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 22px rgba(10,25,60,.12);
-    }
-    .chip b{font-weight:700}
-    .nav{
-      display:flex; align-items:center; gap:16px; flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .nav a{
-      color: rgba(10,25,60,.78);
-      text-decoration:none;
-      font-weight:600;
-      font-size:12.5px;
-    }
-    .nav a:hover{opacity:.9;text-decoration:underline}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:9px 14px;
-      border-radius:10px;
-      background: linear-gradient(180deg,var(--btn),var(--btn2));
-      color:white!important;
-      text-decoration:none;
-      font-weight:700;
-      box-shadow: 0 14px 26px rgba(30,79,182,.25);
-      border:1px solid rgba(255,255,255,.25);
-    }
+        /* Top info bar */
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 18px;
+            font-size: 12px;
+            padding: 10px 40px;
+            color: #f5f7ff;
+            background: linear-gradient(90deg, #152a66, #23458e);
+        }
 
-    /* Main card */
-    .frame{
-      margin-top: 10px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.28);
-      border:1px solid rgba(255,255,255,.45);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      overflow:hidden;
-    }
+        .top-bar span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.9;
+        }
 
-    .header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      padding: 18px 18px 12px 18px;
-    }
+        .top-bar .divider {
+            width: 1px;
+            height: 14px;
+            background: rgba(255, 255, 255, 0.3);
+        }
 
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width: 240px;
-    }
-    .brand .mark{
-      width:48px;height:48px;border-radius:12px;
-      background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.15));
-      border:1px solid rgba(255,255,255,.55);
-      box-shadow: 0 14px 24px rgba(10,25,60,.18);
-      display:grid; place-items:center;
-      font-weight:900;
-      color:#1e4fb6;
-      letter-spacing:.5px;
-    }
-    .brand .name{
-      line-height:1.05;
-      font-weight:900;
-      letter-spacing:.4px;
-    }
-    .brand .name small{
-      display:block;
-      font-weight:800;
-      color:#1e4fb6;
-      letter-spacing: 2px;
-      font-size:10px;
-      margin-top:2px;
-    }
+        /* Header / nav */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 40px 14px;
+            background: linear-gradient(90deg, rgba(12, 39, 96, 0.96), rgba(12, 51, 132, 0.96));
+            color: white;
+        }
 
-    .menu{
-      display:flex; align-items:center; gap:18px; flex-wrap:wrap;
-      justify-content:flex-end;
-      font-weight:700;
-      color: rgba(10,25,60,.75);
-      font-size:12.5px;
-    }
-    .menu a{color:inherit;text-decoration:none}
-    .menu a:hover{text-decoration:underline}
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .hero{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 16px;
-      padding: 10px 18px 18px;
-      align-items:stretch;
-    }
+        .brand-logo {
+            width: 60px;
+            height: 40px;
+            border-radius: 10px;
+            background: radial-gradient(circle at 20% 20%, #ffffff, #b9d5ff 50%, #375bde 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #183066;
+            box-shadow: 0 14px 30px rgba(2, 10, 40, 0.7);
+        }
 
-    .hero-left{
-      padding: 18px 18px 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.45);
-      border:1px solid rgba(255,255,255,.55);
-      box-shadow: 0 18px 40px rgba(10,25,60,.14);
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-left:before{
-      content:"";
-      position:absolute; inset:-60px -80px auto auto;
-      width:260px; height:260px;
-      background: radial-gradient(circle at 30% 30%, rgba(46,102,210,.35), rgba(46,102,210,0));
-      transform: rotate(12deg);
-      pointer-events:none;
-    }
-    .kicker{
-      font-size:11px;
-      letter-spacing:2px;
-      font-weight:900;
-      color: rgba(30,79,182,.9);
-      text-transform:uppercase;
-      margin-bottom:10px;
-    }
-    h1{
-      margin:0 0 10px;
-      font-size: 34px;
-      line-height: 1.06;
-      letter-spacing: -.7px;
-    }
-    .bullets{
-      margin: 10px 0 14px;
-      padding: 0;
-      list-style:none;
-      color: rgba(10,25,60,.78);
-      font-weight:650;
-      font-size:13.2px;
-    }
-    .bullets li{
-      margin: 7px 0;
-      display:flex; gap:10px; align-items:flex-start;
-    }
-    .tick{
-      width:18px;height:18px;border-radius:6px;
-      background: rgba(46,102,210,.18);
-      border:1px solid rgba(46,102,210,.28);
-      display:inline-grid; place-items:center;
-      flex:0 0 18px;
-      margin-top:1px;
-    }
-    .tick:after{content:"✓"; font-weight:900; color:#1e4fb6; font-size:12px}
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
 
-    .cta{
-      display:flex; align-items:center; gap:12px; flex-wrap:wrap;
-      margin-top: 10px;
-    }
-    .cta .btn{padding:10px 16px;border-radius:10px}
-    .subnote{
-      font-size:11.5px;
-      color: rgba(10,25,60,.65);
-      font-weight:600;
-    }
+        .brand-text span:first-child {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: .1em;
+        }
 
-    .hero-right{
-      border-radius: 16px;
-      background: linear-gradient(180deg, rgba(10,25,60,.28), rgba(10,25,60,.10));
-      border:1px solid rgba(255,255,255,.35);
-      box-shadow: 0 18px 40px rgba(10,25,60,.16);
-      position:relative;
-      overflow:hidden;
-      display:grid;
-      place-items:center;
-      padding:16px;
-    }
-    .hero-right .mock{
-      width: 92%;
-      max-width: 330px;
-      border-radius: 14px;
-      background: rgba(10,25,60,.55);
-      border:1px solid rgba(255,255,255,.22);
-      box-shadow: 0 22px 46px rgba(0,0,0,.22);
-      padding: 14px;
-      color: rgba(255,255,255,.88);
-      font-size: 12px;
-    }
-    .mock .row{
-      display:flex; justify-content:space-between; align-items:center;
-      margin-bottom: 10px;
-      font-weight:800;
-      opacity:.95;
-    }
-    .pill{
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.18);
-      font-size:11px;
-      font-weight:800;
-    }
-    .grid2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-    }
-    .stat{
-      border-radius:12px;
-      padding:10px;
-      background: rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.14);
-    }
-    .stat b{display:block;font-size:13px}
-    .stat span{opacity:.8;font-weight:700;font-size:11px}
+        .brand-text span:last-child {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            opacity: .85;
+        }
 
-    .mid{
-      padding: 6px 18px 16px;
-    }
-    .midcard{
-      border-radius: 16px;
-      background: rgba(10,25,60,.22);
-      border:1px solid rgba(255,255,255,.22);
-      color: rgba(255,255,255,.9);
-      box-shadow: 0 18px 40px rgba(10,25,60,.16);
-      padding: 16px 18px;
-      text-align:center;
-      font-weight:700;
-      font-size:13px;
-    }
-    .midcard .title{
-      letter-spacing: 2px;
-      font-size: 11px;
-      font-weight:900;
-      opacity:.9;
-      margin-bottom:8px;
-    }
-    .midcard p{
-      margin:0;
-      opacity:.92;
-      font-weight:650;
-      line-height:1.35;
-    }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            font-size: 13px;
+        }
 
-    .partners{
-      padding: 10px 18px 18px;
-    }
-    .partners h2{
-      text-align:center;
-      margin: 0 0 10px;
-      letter-spacing: 2px;
-      font-size: 16px;
-      font-weight: 950;
-      color: rgba(10,25,60,.86);
-    }
-    .logos{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      padding: 10px;
-      border-radius: 16px;
-      background: rgba(10,25,60,.20);
-      border:1px solid rgba(255,255,255,.22);
-      box-shadow: 0 18px 40px rgba(10,25,60,.14);
-      overflow:auto;
-    }
-    .logoBox{
-      min-width: 120px;
-      height: 54px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.92);
-      border:1px solid rgba(255,255,255,.45);
-      box-shadow: 0 10px 18px rgba(0,0,0,.10);
-      display:grid;
-      place-items:center;
-      padding: 8px;
-      flex: 1 0 140px;
-    }
-    .logoBox img{
-      max-width: 100%;
-      max-height: 40px;
-      object-fit:contain;
-      display:block;
-    }
+        nav a {
+            color: #e6eeff;
+            text-decoration: none;
+            opacity: 0.9;
+        }
 
-    .contact{
-      padding: 0 18px 18px;
-    }
-    .contactGrid{
-      display:grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 14px;
-      align-items:stretch;
-    }
-    .photoCard{
-      border-radius:16px;
-      overflow:hidden;
-      background: rgba(10,25,60,.25);
-      border:1px solid rgba(255,255,255,.22);
-      box-shadow: 0 18px 40px rgba(10,25,60,.16);
-      position:relative;
-      min-height: 270px;
-    }
-    .photoCard img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      filter: saturate(1.05) contrast(1.02);
-    }
+        nav a:hover {
+            opacity: 1;
+        }
 
-    .formCard{
-      border-radius:16px;
-      background: rgba(10,25,60,.28);
-      border:1px solid rgba(255,255,255,.22);
-      box-shadow: 0 18px 40px rgba(10,25,60,.16);
-      padding: 16px 16px 14px;
-      color: rgba(255,255,255,.92);
-    }
-    .formCard h3{
-      margin:0;
-      letter-spacing:2px;
-      font-size: 14px;
-      font-weight: 950;
-    }
-    .formCard .sub{
-      margin:8px 0 12px;
-      opacity:.9;
-      font-weight:700;
-    }
-    .gridForm{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-    }
-    .gridForm .full{grid-column:1/-1}
-    input, textarea{
-      width:100%;
-      padding: 10px 11px;
-      border-radius: 10px;
-      background: rgba(255,255,255,.18);
-      border:1px solid rgba(255,255,255,.26);
-      color: rgba(255,255,255,.92);
-      outline:none;
-      font-weight:650;
-      font-size: 13px;
-    }
-    input::placeholder, textarea::placeholder{color: rgba(255,255,255,.65)}
-    textarea{min-height: 86px; resize:none}
-    .formBottom{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 12px;
-      margin-top: 10px;
-      flex-wrap:wrap;
-    }
-    .info{
-      font-size: 12px;
-      opacity:.92;
-      font-weight:700;
-      line-height: 1.55;
-    }
-    .info .line{display:flex; gap:8px; align-items:center}
-    .info .dot{
-      width:8px;height:8px;border-radius:999px;
-      background: rgba(255,255,255,.7);
-      opacity:.75;
-    }
-    .send{
-      padding:10px 16px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,.22);
-      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.10));
-      color:white;
-      font-weight:900;
-      cursor:pointer;
-      box-shadow: 0 16px 28px rgba(0,0,0,.18);
-    }
-    .send:hover{filter:brightness(1.05)}
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
 
-    .footer{
-      padding: 14px 18px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      color: rgba(255,255,255,.78);
-      font-size: 11.5px;
-      font-weight:650;
-    }
-    .footer .left{
-      display:flex; align-items:center; gap:10px;
-    }
-    .footer .miniMark{
-      width:34px;height:34px;border-radius:10px;
-      background: rgba(255,255,255,.16);
-      border:1px solid rgba(255,255,255,.22);
-      display:grid; place-items:center;
-      font-weight:950;
-      color:white;
-      letter-spacing:.5px;
-    }
-    .footer a{color: rgba(255,255,255,.85); text-decoration:none}
-    .footer a:hover{text-decoration:underline}
+        .flag {
+            width: 12px;
+            height: 8px;
+            border-radius: 2px;
+            background: linear-gradient(#b22234 0 33%, #fff 33% 66%, #3c3b6e 66% 100%);
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.5);
+        }
 
-    @media (max-width: 860px){
-      .hero{grid-template-columns:1fr}
-      .contactGrid{grid-template-columns:1fr}
-      .header{flex-direction:column; align-items:flex-start}
-      .menu{justify-content:flex-start}
-      .brand{min-width:auto}
-    }
-  </style>
+        .chip {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,.4);
+            background: rgba(7,25,70,.6);
+        }
+
+        .btn-primary {
+            padding: 8px 18px;
+            border-radius: 999px;
+            border: none;
+            outline: none;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+            cursor: pointer;
+            box-shadow: 0 12px 25px rgba(12, 60, 170, 0.6);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        }
+
+        /* Hero */
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(0, 1.1fr);
+            gap: 20px;
+            padding: 26px 40px 20px;
+            position: relative;
+        }
+
+        .hero-left {
+            padding-right: 24px;
+        }
+
+        .section-kicker {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #315ac9;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: 31px;
+            line-height: 1.2;
+            font-weight: 800;
+            color: #0b1840;
+            margin-bottom: 14px;
+        }
+
+        .hero-list {
+            list-style: none;
+            font-size: 13px;
+            color: var(--text-soft);
+            margin: 12px 0 18px;
+        }
+
+        .hero-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .hero-list li::before {
+            content: "✓";
+            color: #1db05c;
+            font-weight: 700;
+            margin-top: 1px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .hero-cta .btn-secondary {
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 12px;
+            border: 1px solid rgba(25, 63, 139, 0.35);
+            background: rgba(255,255,255,0.85);
+            color: #12306b;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .hero-caption {
+            font-size: 11px;
+            color: #4a5f8a;
+            margin-top: 8px;
+        }
+
+        /* Hero right card */
+        .hero-right {
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+        }
+
+        .hero-panel {
+            flex: 1;
+            background: radial-gradient(circle at 0 0, rgba(255,255,255,0.9) 0, rgba(6,18,60,0.95) 50%, rgba(4,10,35,0.95) 100%);
+            border-radius: 32px;
+            box-shadow: var(--shadow-soft);
+            padding: 22px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1200");
+            background-size: cover;
+            background-position: center right;
+            opacity: 0.65;
+            mix-blend-mode: screen;
+        }
+
+        .hero-panel-top,
+        .hero-panel-bottom {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-person {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .hero-avatar {
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,.8);
+            background-image: url("https://images.pexels.com/photos/8297337/pexels-photo-8297337.jpeg?auto=compress&cs=tinysrgb&w=800");
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.8);
+        }
+
+        .hero-person-info small {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            color: #8ea5ff;
+        }
+
+        .hero-person-info strong {
+            display: block;
+            font-size: 13px;
+            color: #ffffff;
+            margin-top: 3px;
+        }
+
+        .hero-dashboard {
+            margin-top: 10px;
+            border-radius: 18px;
+            padding: 10px 12px;
+            background: radial-gradient(circle at 0 0, #344dff, #040b28);
+            border: 1px solid rgba(132, 168, 255, 0.4);
+            color: #e6ecff;
+            font-size: 10px;
+        }
+
+        .hero-dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .hero-dashboard-header span:last-child {
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 2px 8px;
+            font-size: 9px;
+            text-transform: uppercase;
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 8px;
+        }
+
+        .metric {
+            border-radius: 10px;
+            padding: 6px 6px;
+            background: rgba(8,21,58,0.95);
+            border: 1px solid rgba(109,146,255,0.4);
+        }
+
+        .metric span {
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 9px;
+            color: #8e9dff;
+        }
+
+        .metric-value {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* Trust strip */
+        .trust-strip {
+            margin: 6px 40px 18px;
+            border-radius: 999px;
+            padding: 8px 20px;
+            font-size: 11px;
+            text-align: center;
+            color: #f5f7ff;
+            background: linear-gradient(90deg, #14346f, #1c4595);
+            box-shadow: 0 20px 40px rgba(5,22,70,0.5);
+        }
+
+        /* Services row */
+        .services-section {
+            padding: 4px 40px 4px;
+        }
+
+        .services-title {
+            text-align: center;
+            font-size: 13px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: #24408c;
+            margin-bottom: 10px;
+        }
+
+        .services-row {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0,1fr));
+            gap: 14px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 10px 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 20px rgba(31,64,144,0.15);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: #2b3c70;
+        }
+
+        /* Partners + contact */
+        .partners-section {
+            margin-top: 18px;
+            padding: 0 40px 28px;
+        }
+
+        .partners-title {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: #24408c;
+            margin-bottom: 10px;
+        }
+
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.92fr) minmax(0, 0.85fr);
+            gap: 18px;
+        }
+
+        .partners-image {
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(9,28,80,0.6);
+            height: 260px;
+            position: relative;
+        }
+
+        .partners-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-card {
+            background: radial-gradient(circle at 10% 0, #3159e0, #0b1430 60%);
+            border-radius: 22px;
+            padding: 18px 20px;
+            color: #f3f4ff;
+            box-shadow: 0 20px 50px rgba(4,12,40,0.8);
+            display: grid;
+            grid-template-rows: auto auto 1fr auto;
+            gap: 8px;
+        }
+
+        .contact-heading {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .contact-sub {
+            font-size: 11px;
+            color: #c7d4ff;
+            margin-bottom: 6px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0,1fr));
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .form-grid-full {
+            grid-column: 1 / -1;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 11px;
+        }
+
+        .field label {
+            color: #dce4ff;
+        }
+
+        .field input,
+        .field textarea {
+            border-radius: 999px;
+            border: 1px solid rgba(162, 185, 255, 0.7);
+            padding: 7px 10px;
+            background: rgba(4,11,30,0.7);
+            color: white;
+            font-size: 11px;
+            outline: none;
+        }
+
+        .field textarea {
+            border-radius: 14px;
+            min-height: 60px;
+            resize: vertical;
+        }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: rgba(193,209,255,0.6);
+        }
+
+        .contact-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 14px;
+            margin-top: 10px;
+            font-size: 11px;
+        }
+
+        .contact-info small {
+            display: block;
+            color: #9fb1ff;
+        }
+
+        .contact-info span {
+            display: block;
+        }
+
+        .contact-send {
+            align-self: flex-end;
+        }
+
+        footer {
+            padding: 10px 40px 16px;
+            font-size: 10px;
+            color: rgba(15,31,80,0.9);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer .footer-right {
+            display: flex;
+            gap: 16px;
+        }
+
+        @media (max-width: 980px) {
+            body {
+                padding: 16px 8px;
+            }
+            .page-shell {
+                border-radius: 0;
+            }
+            header,
+            .hero,
+            .trust-strip,
+            .services-section,
+            .partners-section,
+            footer {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .hero-right {
+                order: -1;
+            }
+            .services-row {
+                grid-template-columns: repeat(2, minmax(0,1fr));
+            }
+            .bottom-grid {
+                grid-template-columns: 1fr;
+            }
+            .partners-image {
+                height: 210px;
+            }
+            nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .services-row {
+                grid-template-columns: 1fr 1fr;
+            }
+            .top-bar {
+                display: none;
+            }
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="left">
-        <span class="chip">☎ <b>+1 (812) 918-72-36</b></span>
-        <span class="chip">✉ <b>info@masterglobal.online</b></span>
-      </div>
-      <div class="right">
-        <div class="nav">
-          <a href="#about">About Us</a>
-          <a href="#services">Our Services</a>
-          <a href="#why">Why Choose Us</a>
-          <a href="#how">How We Work</a>
-          <a href="#contact">Contact</a>
-          <span class="chip">🇺🇸 <b>Wyoming, USA</b></span>
-          <a class="btn" href="#contact">Get in Touch</a>
-        </div>
-      </div>
+<div class="page-shell">
+    <!-- Top contact strip -->
+    <div class="top-bar">
+        <span>+1 (812) 918-72-36</span>
+        <span class="divider"></span>
+        <span>info@masterglobal.online</span>
     </div>
 
-    <div class="frame">
-      <div class="header">
+    <!-- Header -->
+    <header>
         <div class="brand">
-          <div class="mark">MG</div>
-          <div class="name">
-            MASTER GLOBAL <small>LLC</small>
-          </div>
+            <div class="brand-logo">MG</div>
+            <div class="brand-text">
+                <span>MASTER GLOBAL</span>
+                <span>LLC • E-COMMERCE SOLUTIONS</span>
+            </div>
         </div>
-        <div class="menu">
-          <a href="#about">About Us</a>
-          <a href="#services">Our Services</a>
-          <a href="#why">Why Choose Us</a>
-          <a href="#how">How We Work</a>
-          <a href="#contact">Contact</a>
-          <a class="btn" href="#contact">Get in Touch</a>
-        </div>
-      </div>
 
-      <section class="hero" id="about">
+        <nav>
+            <a href="#about">About Us</a>
+            <a href="#services">Our Services</a>
+            <a href="#why">Why Choose Us</a>
+            <a href="#work">How We Work</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-right">
+            <div class="flag"></div>
+            <span class="chip">Wyoming, USA</span>
+            <button class="btn-primary">Get in Touch</button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="about">
         <div class="hero-left">
-          <div class="kicker">GLOBAL MARKETPLACE OPERATIONS</div>
-          <h1>Amazon &amp; E-Commerce<br/>Growth for Brands</h1>
-
-          <ul class="bullets">
-            <li><span class="tick"></span>Scale your brand sustainably across Amazon and global e-commerce marketplaces</li>
-            <li><span class="tick"></span>Full-service management of listings, ads, wholesale and logistics</li>
-            <li><span class="tick"></span>Data-driven, results-oriented strategies for long-term growth</li>
-          </ul>
-
-          <div class="cta">
-            <a class="btn" href="#contact">REQUEST A CALL</a>
-            <div class="subnote">A trusted growth partner in end-to-end e-commerce operations.</div>
-          </div>
+            <div class="section-kicker">Global Marketplace Operations</div>
+            <h1 class="hero-title">
+                Amazon &amp; E-Commerce<br />
+                Growth for Brands
+            </h1>
+            <ul class="hero-list">
+                <li>Scale your brand sustainably across Amazon and global e-commerce marketplaces.</li>
+                <li>Full-service management of listings, ads, wholesale and logistics.</li>
+                <li>Data-driven, results-oriented strategies for long-term growth.</li>
+            </ul>
+            <div class="hero-cta">
+                <button class="btn-primary">Request a Call</button>
+                <button class="btn-secondary">View More</button>
+            </div>
+            <p class="hero-caption">
+                A trusted growth partner in end-to-end e-commerce operations.
+            </p>
         </div>
 
         <div class="hero-right">
-          <div class="mock">
-            <div class="row">
-              <div>Brand Performance Dashboard</div>
-              <span class="pill">Live</span>
-            </div>
-            <div class="grid2">
-              <div class="stat"><span>Monthly Revenue</span><b>$420K</b></div>
-              <div class="stat"><span>ACOS</span><b>18.3%</b></div>
-              <div class="stat"><span>Units Shipped</span><b>32,900</b></div>
-              <div class="stat"><span>ROAS</span><b>4.8x</b></div>
-            </div>
-          </div>
-        </div>
-      </section>
+            <div class="hero-panel">
+                <div class="hero-panel-top">
+                    <div class="hero-person">
+                        <div class="hero-avatar"></div>
+                        <div class="hero-person-info">
+                            <small>Lead Marketplace Strategist</small>
+                            <strong>Senior Brand Growth Manager</strong>
+                        </div>
+                    </div>
 
-      <div class="mid">
-        <div class="midcard" id="why">
-          <div class="title">A TRUSTED GROWTH PARTNER</div>
-          <p>We help brands scale efficiently while protecting their integrity on Amazon and global marketplaces.</p>
-        </div>
-      </div>
-
-      <section class="partners" id="services">
-        <h2>SERVICES WE OFFER</h2>
-        <div class="logos" aria-label="partner logos">
-          <!-- Buraya istersen gerçek logoları linkleyebiliriz. Şimdilik yer tutucu -->
-          <div class="logoBox"><img alt="Keyless Shield" src="https://dummyimage.com/220x80/ffffff/1e4fb6.png&text=Keyless+Shield"></div>
-          <div class="logoBox"><img alt="Enjet" src="https://dummyimage.com/220x80/ffffff/1e4fb6.png&text=ENJET"></div>
-          <div class="logoBox"><img alt="Selweka" src="https://dummyimage.com/220x80/ffffff/1e4fb6.png&text=Selweka"></div>
-          <div class="logoBox"><img alt="Profesa" src="https://dummyimage.com/220x80/ffffff/1e4fb6.png&text=PROFESA"></div>
-          <div class="logoBox"><img alt="The Sile Fabric" src="https://dummyimage.com/220x80/ffffff/1e4fb6.png&text=the+sile+fabric"></div>
-        </div>
-      </section>
-
-      <section class="contact" id="contact">
-        <div class="partners">
-          <h2>OUR PARTNERS</h2>
-        </div>
-
-        <div class="contactGrid">
-          <div class="photoCard">
-            <img alt="Business meeting" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=70">
-          </div>
-
-          <div class="formCard">
-            <h3>CONTACT US</h3>
-            <div class="sub">Let’s Discuss How We Can Scale Your Brand</div>
-
-            <form onsubmit="event.preventDefault(); alert('Message sent! (demo)');">
-              <div class="gridForm">
-                <input class="full" placeholder="Name" required />
-                <input class="full" type="email" placeholder="Email" required />
-                <input class="full" placeholder="Subject" required />
-                <textarea class="full" placeholder="Message" required></textarea>
-              </div>
-
-              <div class="formBottom">
-                <div class="info">
-                  <div class="line"><span class="dot"></span> +1 (812) 918-72-36</div>
-                  <div class="line"><span class="dot"></span> info@masterglobal.online</div>
-                  <div class="line"><span class="dot"></span> Wyoming, USA</div>
+                    <div class="hero-dashboard">
+                        <div class="hero-dashboard-header">
+                            <span>Brand Performance Dashboard</span>
+                            <span>Live</span>
+                        </div>
+                        <div class="hero-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Monthly Revenue</span>
+                                <span class="metric-value">$420K</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">ACoS</span>
+                                <span class="metric-value">18.3%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Units Shipped</span>
+                                <span class="metric-value">32,900</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button class="send" type="submit">SEND MESSAGE</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
 
-      <div class="footer">
-        <div class="left">
-          <div class="miniMark">MG</div>
-          <div>© 2026 Master Global LLC – E-Commerce Solutions</div>
+                <div class="hero-panel-bottom">
+                    <!-- boş bırakıyoruz, görsel arka plan görevi görüyor -->
+                </div>
+            </div>
         </div>
-        <div><a href="#about">Home</a> · <a href="#services">Our Services</a> · <a href="#contact">Contact</a></div>
-      </div>
+    </section>
+
+    <!-- Trust strip -->
+    <div class="trust-strip">
+        We help brands scale efficiently while protecting their integrity on Amazon and global marketplaces.
     </div>
-  </div>
+
+    <!-- Services -->
+    <section class="services-section" id="services">
+        <div class="services-title">Services We Offer – Selected Partners</div>
+        <div class="services-row">
+            <div class="service-card">Keyless Shield</div>
+            <div class="service-card">ENJET</div>
+            <div class="service-card">Selweka</div>
+            <div class="service-card">Profesa</div>
+            <div class="service-card">The Sile Fabric</div>
+        </div>
+    </section>
+
+    <!-- Partners & contact -->
+    <section class="partners-section" id="contact">
+        <div class="partners-title">Our Partners</div>
+
+        <div class="bottom-grid">
+            <div class="partners-image">
+                <img src="https://images.pexels.com/photos/1181355/pexels-photo-1181355.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                     alt="Team meeting" />
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-heading">Contact Us</div>
+                <div class="contact-sub">Let’s discuss how we can scale your brand.</div>
+
+                <form>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input id="name" type="text" placeholder="Your name" />
+                        </div>
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input id="email" type="email" placeholder="you@example.com" />
+                        </div>
+                        <div class="field form-grid-full">
+                            <label for="brand">Brand / Company</label>
+                            <input id="brand" type="text" placeholder="Brand name" />
+                        </div>
+                        <div class="field form-grid-full">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Tell us briefly about your goals on Amazon & marketplaces."></textarea>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="contact-bottom">
+                    <div class="contact-info">
+                        <small>Master Global LLC</small>
+                        <span>Phone: +1 (812) 918-72-36</span>
+                        <span>Email: info@masterglobal.online</span>
+                        <span>Location: Wyoming, USA</span>
+                    </div>
+                    <div class="contact-send">
+                        <button class="btn-primary">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div>© 2026 Master Global LLC – E-Commerce Solutions</div>
+        <div class="footer-right">
+            <span>Home</span>
+            <span>Our Services</span>
+            <span>Contact</span>
+        </div>
+    </footer>
+</div>
 </body>
 </html>
